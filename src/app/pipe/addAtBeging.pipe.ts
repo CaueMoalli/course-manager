@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'addAtBegining',
 })
 export class addAtBegining implements PipeTransform {
-  transform(value: number, char: string) {
+  transform(value: any, char: string) {
     return char + value;
   }
 }
