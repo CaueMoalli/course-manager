@@ -7,20 +7,40 @@ import { CourseListComponent } from './courses/course-list.component';
 import { StarComponent } from './star/star.component';
 import { ReplacePipe } from './pipe/replace.pipe';
 import { addAtBegining } from './pipe/addAtBeging.pipe';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RouterModule } from '@angular/router';
+import { Error404Component } from './error-404/error-404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent,
     CourseListComponent,
     StarComponent,
     ReplacePipe,
-    addAtBegining
+    addAtBegining,
+    Error404Component,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: 'courses',
+        pathMatch: 'full',
+      },
+      {
+        path: 'courses',
+        component: CourseListComponent,
+      },
+      {
+        path: '**',
+        component: Error404Component,
+      },
+    ]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
